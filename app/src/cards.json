@@ -1,0 +1,56 @@
+[
+  {
+    "id": 0,
+    "name": "Ice Wizard",
+    "image": "https://cdn.statsroyale.com/images/cards/full/ice_wizard.png",
+    "clicked": false
+  },
+  {
+    "id": 1,
+    "name": "Hog Rider",
+    "image": "https://cdn.statsroyale.com/images/cards/full/hog_rider.png",
+    "clicked": false
+  },
+  {
+    "id": 2,
+    "name": "Giant",
+    "image": "https://cdn.statsroyale.com/images/cards/full/giant.png",
+    "clicked": false
+  },
+  {
+    "id": 3,
+    "name": "P.E.K.K.A",
+    "image": "https://cdn.statsroyale.com/images/cards/full/pekka.png",
+    "clicked": false
+  },
+  {
+    "id": 4,
+    "name": "Balloon",
+    "image": "https://cdn.statsroyale.com/images/cards/full/chr_balloon.png",
+    "clicked": false
+  },
+  {
+    "id": 5,
+    "name": "Witch",
+    "image": "https://cdn.statsroyale.com/images/cards/full/chr_witch.png",
+    "clicked": false
+  },
+  {
+    "id": 6,
+    "name": "Valkyrie",
+    "image": "https://cdn.statsroyale.com/images/cards/full/valkyrie.png",
+    "clicked": false
+  },
+  {
+    "id": 7,
+    "name": "Dart Goblin",
+    "image": "https://cdn.statsroyale.com/images/cards/full/blowdart_goblin.png",
+    "clicked": false
+  },
+  {
+    "id": 8,
+    "name": "Tesla",
+    "image": "https://cdn.statsroyale.com/images/cards/full/building_tesla.png",
+    "clicked": false
+  }
+]
