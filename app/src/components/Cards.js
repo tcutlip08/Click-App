@@ -5,11 +5,11 @@ function Cards(props) {
   return (
     <div
       onClick={() => props.setClicked(props.id)}
-      className="card col-sm-3"
+      className="card col-sm-4"
       key={props.id}
     >
-      <div className="img-container">
-        <img alt={props.name} src={props.image} height="auto" />
+      <div className="img">
+        <img alt={props.name} src={props.image} />
       </div>
       <div className="itemName">{props.name}</div>
     </div>

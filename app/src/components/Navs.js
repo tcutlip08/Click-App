@@ -4,13 +4,20 @@ import "./style.css";
 function Navs(props) {
   return (
     <div className="navbar">
-      <ul>
-        <li className="brand">
+      <div className="container">
+        <div className="col">
           <a href="/">Clicky Game</a>
-        </li>
-        <li className="">Click an image to begin!</li>
-        <li>Score: 0 | Top Score: 0</li>
-      </ul>
+        </div>
+        <div className="col">Click an image to begin!</div>
+        <div className="col">
+          Score:{" "}
+          <span id="currentScore">
+            {props.currentScore ? props.currentScore : "0"}
+          </span>{" "}
+          | Top Score:{" "}
+          <span id="highScore">{props.highScore ? props.highScore : "0"}</span>
+        </div>
+      </div>
     </div>
   );
 }
