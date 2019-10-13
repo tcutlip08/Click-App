@@ -5,44 +5,87 @@ import Wrapper from "./components/Wrapper";
 import Cards from "./components/Cards";
 import cards from "./cards.json";
 
+const fullArray = cards;
+
 class App extends Component {
   state = {
     currentScore: 0,
     highScore: 0,
-    card: cards
+    cards,
+    message: "Click an image to begin!"
   };
 
   componentDidMount() {}
 
+  componentDidUpdate() {
+    console.log(fullArray);
+  }
+
   setClicked = id => {
-    // Make sure you install axios using (npm install axios) in your terminal
-    if (this.state.card[id].clicked) {
-      console.log("You fuckin lose");
-      this.resetStats(cards);
-    } else {
-      this.setState(state => {
-        const cards = state.card.map(card => {
-          if (card.id === id) {
-            card.clicked = true;
-          }
-        });
-        return {
-          cards
-        };
-      });
+    console.log(id);
+    let cardClicked;
+    for (let i = 0; i < this.state.cards.length; i++) {
+      if (this.state.cards[id] === fullArray[i]) {
+        cardClicked = fullArray[i];
+        console.log(cardClicked);
+      }
     }
-    this.setState({ currentScore: this.state.currentScore + 1 });
-    console.log(this.state.currentScore);
+    if (cardClicked.clicked) {
+      console.log("fucked");
+      this.testNewHighScore(this.state.currentScore);
+      this.setState({ message: "Sorry, Game Over. Lets Try Again" });
+      this.resetStats();
+    } else {
+      this.state.cards.map(card => {
+        if (card.id === id) {
+          card.clicked = true;
+        }
+      });
+
+      // this.setState({ cards: newArray });
+
+      this.incrementCurrentScore();
+      // Wasn't able to implement this funtion without having some other bug or issue pop up
+      // this.shuffle();
+    }
   };
 
-  resetStats = cards => {
+  shuffle = () => {
+    this.state.cards.sort(function(a, b) {
+      return 0.5 - Math.random();
+    });
+  };
+
+  testNewHighScore = score => {
+    if (score > this.state.highScore) {
+      this.setState({ highScore: score });
+    }
+  };
+
+  incrementCurrentScore = () => {
+    this.setState({
+      currentScore: this.state.currentScore + 1
+    });
+    this.testIfWin();
+  };
+
+  testIfWin = () => {
+    // console.log(this.state.currentScore);
+
+    let displayMessage =
+      this.state.currentScore === this.state.cards.length
+        ? "Congrats, You Win!"
+        : "Correct! Keep Going!";
+
+    this.setState({ message: displayMessage });
+  };
+
+  resetStats = () => {
     this.setState(state => {
-      const cards = state.card.map(card => {
+      state.cards.map(card => {
         card.clicked = false;
+        return "nothing";
       });
-      return {
-        cards
-      };
     });
     this.setState({ currentScore: 0 });
     console.log("Reset Func..");
@@ -62,101 +105,23 @@ class App extends Component {
   };
 
   render() {
+    // const fullArray = cards;
+
     return (
       <Wrapper>
         <Navs
           score={this.state.currentScore}
           highScore={this.state.highScore}
+          message={this.state.message}
         />
         ;
         <Header />;
         <div className="container">
           <div className="row 1">
-            {this.state.card.map((card, i) => {
+            {this.state.cards.map(card => {
               return this.cardPropFunction(card);
             })}
           </div>
-          {/* {this.state.card.map((res, i) => {
-            if (i === 0) {
-              return (
-                <div className={`row${i + 1}`} key={i}>
-                  {this.state.card.map((card, j) => {
-                    if (j < 3) {
-                      return this.cardPropFunction(card);
-                    }
-                  })}
-                </div>
-              );
-            } else if (i === 1) {
-              return (
-                <div className={`row${i + 1}`} key={i}>
-                  {this.state.card.map((card, j) => {
-                    if (j >= 3 && j < 6) {
-                      return this.cardPropFunction(card);
-                    }
-                  })}
-                </div>
-              );
-            } else {
-              return (
-                <div className={`row${i + 1}`} key={i}>
-                  {this.state.card.map((card, j) => {
-                    if (j >= 6) {
-                      return this.cardPropFunction(card);
-                    }
-                  })}
-                </div>
-              );
-            }
-          })} */}
-          {/* <div className="row 1">
-            {this.state.card.map((card, i) => {
-              if (i < 3) {
-                return (
-                  <Cards
-                    id={card.id}
-                    key={card.id}
-                    name={card.name}
-                    image={card.image}
-                    clicked={card.clicked}
-                    setClicked={this.setClicked}
-                  />
-                );
-              }
-            })}
-          </div> */}
-          {/* <div className="row 2">
-            {this.state.card.map((card, i) => {
-              if (i >= 3 && i < 6) {
-                return (
-                  <Cards
-                    id={card.id}
-                    key={card.id}
-                    name={card.name}
-                    image={card.image}
-                    clicked={card.clicked}
-                    setClicked={this.setClicked}
-                  />
-                );
-              }
-            })}
-          </div>
-          <div className="row 3">
-            {this.state.card.map((card, i) => {
-              if (i >= 6) {
-                return (
-                  <Cards
-                    id={card.id}
-                    key={card.id}
-                    name={card.name}
-                    image={card.image}
-                    clicked={card.clicked}
-                    setClicked={this.setClicked}
-                  />
-                );
-              }
-            })}
-          </div> */}
         </div>
       </Wrapper>
     );

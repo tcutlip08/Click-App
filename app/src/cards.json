@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "name": "Ice Wizard",
-    "image": "https://cdn.statsroyale.com/images/cards/full/ice_wizard.png",
+    "name": "Witch",
+    "image": "https://cdn.statsroyale.com/images/cards/full/chr_witch.png",
     "clicked": false
   },
   {
@@ -25,14 +25,14 @@
   },
   {
     "id": 4,
-    "name": "Balloon",
-    "image": "https://cdn.statsroyale.com/images/cards/full/chr_balloon.png",
+    "name": "Ice Wizard",
+    "image": "https://cdn.statsroyale.com/images/cards/full/ice_wizard.png",
     "clicked": false
   },
   {
     "id": 5,
-    "name": "Witch",
-    "image": "https://cdn.statsroyale.com/images/cards/full/chr_witch.png",
+    "name": "Balloon",
+    "image": "https://cdn.statsroyale.com/images/cards/full/chr_balloon.png",
     "clicked": false
   },
   {
